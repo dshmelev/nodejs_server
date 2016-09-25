@@ -13,6 +13,15 @@ app.get('/', function (req, res) {
   console.log('Get request: ' + req.headers.host + ' ' + req.method + ' ' + req.url )
   res.send('Hello Dima\n');
 });
+app.get('/exit', function (req, res) {
+  console.log('About to exit, waiting for remaining connections to complete');
+  process.exit(1);
+});
+app.get('/load', function (req, res) {
+  while (true) {
+    Math.random();
+  }
+});
 
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
